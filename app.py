@@ -11,7 +11,7 @@ st.set_page_config(page_title='BCTDTS')
 
 # write title and subtitle
 st.title('💰 BCTDTS')
-st.write('A quick and easy timesheet maker for Baker boys. Created by: Saleh.')
+st.write('Quick timesheet maker for Baker boys. Created by Saleh.')
 
 # create form and input widgets
 form = st.form('input_form')
@@ -112,7 +112,7 @@ if submitted:
 
             # upload modified workbook and convert to pdf
             convertapi.api_secret = st.secrets['api_secret']
-            upload_io = convertapi.UploadIO(output.getvalue(), 'ts.xlsx')
+            upload_io = convertapi.UploadIO(output.getvalue(), 'ts-{}.xlsx'.format(employee_id))
             result = convertapi.convert('pdf', {'File': upload_io})
             saved_file = result.file.save(tempfile.gettempdir())
 
