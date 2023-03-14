@@ -48,17 +48,17 @@ if submitted:
 
     else:
         with st.spinner('Working on your timesheet...'):
-            # quick access easter-egg
-            quick_accessor = employee_name
-            if quick_accessor.startswith('#'):
-                try:
-                    # retrieve data form environment variables (streamlit secrets)
-                    employee_id = st.secrets[quick_accessor[1:]]['id']
-                    employee_name = st.secrets[quick_accessor[1:]]['name']
-                    employee_rate = st.secrets[quick_accessor[1:]]['rate']
-                    rig_name = st.secrets[quick_accessor[1:]]['rig']
-                except:
-                     pass # bad programming: guilty!
+            # # quick access easter-egg
+            # quick_accessor = employee_name
+            # if quick_accessor.startswith('#'):
+            #     try:
+            #         # retrieve data form environment variables (streamlit secrets)
+            #         employee_id = st.secrets[quick_accessor[1:]]['id']
+            #         employee_name = st.secrets[quick_accessor[1:]]['name']
+            #         employee_rate = st.secrets[quick_accessor[1:]]['rate']
+            #         rig_name = st.secrets[quick_accessor[1:]]['rig']
+            #     except:
+            #          pass
 
             # load workbook and set active worksheet
             wb = load_workbook(filename=r'template.xlsx', read_only=False)
