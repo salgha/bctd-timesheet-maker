@@ -6,8 +6,11 @@ import calendar
 import tempfile
 import convertapi
 
+# hide hamburger menu
+st.markdown('<style>#MainMenu {visibility: hidden;}</style>', unsafe_allow_html=True)
+
 # set page title tag
-st.set_page_config(page_title='BCTD-TS')
+st.set_page_config(page_title='BCTDTS')
 
 # write title and subtitle
 st.title('💰 BCTDTS')
