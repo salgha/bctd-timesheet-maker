@@ -7,7 +7,7 @@ import tempfile
 import convertapi
 
 # set page title tag
-st.set_page_config(page_title='BCTDTS')
+st.set_page_config(page_title='BCTD-TS')
 
 # write title and subtitle
 st.title('💰 BCTDTS')
