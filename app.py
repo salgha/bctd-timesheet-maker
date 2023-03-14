@@ -5,6 +5,7 @@ import datetime
 import calendar
 import tempfile
 import convertapi
+import os
 
 # set page title tag
 st.set_page_config(page_title='BCTDTS')
@@ -114,7 +115,7 @@ if submitted:
                 output = BytesIO(tmp.read())
 
             # upload modified workbook and convert to pdf
-            convertapi.api_secret = st.secrets['api_secret']
+            convertapi.api_secret = os.environ.get('api_secret')
             upload_io = convertapi.UploadIO(output.getvalue(), 'ts-{}.xlsx'.format(employee_id))
             result = convertapi.convert('pdf', {'File': upload_io})
             saved_file = result.file.save(tempfile.gettempdir())
