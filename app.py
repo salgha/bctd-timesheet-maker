@@ -239,7 +239,7 @@ if len(quick_multiselect) > 0:
                 del wb[ws2.title]
 		
             # set filename 
-            file_name = 'TS'
+            file_name = ''.join(str(i) for i in ids)
 
             # save modified workbook to stream
             with tempfile.NamedTemporaryFile() as tmp:
@@ -268,7 +268,7 @@ if len(quick_multiselect) > 0:
                 st.download_button(
                     label = 'Download Timesheet(s)',
                     data = file,
-                    file_name = file_name,
+                    file_name = 'TS-' + str(datetime.date.today()),
                     mime = 'application/pdf'
                 )
 			
