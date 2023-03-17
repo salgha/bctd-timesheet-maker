@@ -236,42 +236,42 @@ if len(quick_multiselect) > 0:
 					# continue filling-in employee-specific cells
                     ws2_aux.title = str(i) + ' - ' + ws2.title
         
-		# delete worksheets used as template for date-specific cells         
-        del wb[ws1.title]
-        if double_sheets:
-            del wb[ws2.title]
+            # delete worksheets used as template for date-specific cells         
+            del wb[ws1.title]
+            if double_sheets:
+                del wb[ws2.title]
 		
-		# set filename 
-        file_name = 'TS'
+            # set filename 
+            file_name = 'TS'
 
-        # save modified workbook to stream
-        with tempfile.NamedTemporaryFile() as tmp:
-            wb.save(tmp.name)
-            output = BytesIO(tmp.read())
+            # save modified workbook to stream
+            with tempfile.NamedTemporaryFile() as tmp:
+                wb.save(tmp.name)
+                output = BytesIO(tmp.read())
 
-        # upload modified workbook and convert to pdf
-        convertapi.api_secret = os.environ.get('api_secret')
-        upload_io = convertapi.UploadIO(output.getvalue(), file_name)
-        result = convertapi.convert('pdf', {'File': upload_io})
-        saved_file = result.file.save(tempfile.gettempdir())
+            # upload modified workbook and convert to pdf
+            convertapi.api_secret = os.environ.get('api_secret')
+            upload_io = convertapi.UploadIO(output.getvalue(), file_name)
+            result = convertapi.convert('pdf', {'File': upload_io})
+            saved_file = result.file.save(tempfile.gettempdir())
 
-        # display success message and download button(s)
-        st.success('Timesheet(s) has been successfully generated.')
-    
-        # download excel file
-        st.download_button(
-            label = 'Download EXCEL File',
-            data = output.getvalue(),
-            file_name = file_name,
-            mime = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-        )
+            # display success message and download button(s)
+            st.success('Timesheet(s) has been successfully generated.')
+        
+            # # download excel file
+            # st.download_button(
+            #     label = 'Download EXCEL File',
+            #     data = output.getvalue(),
+            #     file_name = file_name,
+            #     mime = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+            # )
 
-        # download pdf file
-        with open(saved_file, 'rb') as file:
-            st.download_button(
-                label = 'Download Timesheet(s)',
-                data = file,
-                file_name = file_name,
-                mime = 'application/pdf'
-            )
+            # download pdf file
+            with open(saved_file, 'rb') as file:
+                st.download_button(
+                    label = 'Download Timesheet(s)',
+                    data = file,
+                    file_name = file_name,
+                    mime = 'application/pdf'
+                )
 			
