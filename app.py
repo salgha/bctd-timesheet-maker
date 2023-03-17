@@ -250,10 +250,10 @@ if len(quick_multiselect) > 0:
                 output = BytesIO(tmp.read())
 
             # upload modified workbook and convert to pdf
-            convertapi.api_secret = os.environ.get('api_secret')
-            upload_io = convertapi.UploadIO(output.getvalue(), file_name)
-            result = convertapi.convert('pdf', {'File': upload_io})
-            saved_file = result.file.save(tempfile.gettempdir())
+            # convertapi.api_secret = os.environ.get('api_secret')
+            # upload_io = convertapi.UploadIO(output.getvalue(), file_name)
+            # result = convertapi.convert('pdf', {'File': upload_io})
+            # saved_file = result.file.save(tempfile.gettempdir())
 
             # display success message and download button(s)
             st.success('Timesheet(s) has been successfully generated.')
@@ -267,11 +267,11 @@ if len(quick_multiselect) > 0:
             )
 
             # download pdf file
-            with open(saved_file, 'rb') as file:
-                st.download_button(
-                    label = 'Download Timesheet(s)',
-                    data = file,
-                    file_name = file_name,
-                    mime = 'application/pdf'
-                )
+            # with open(saved_file, 'rb') as file:
+            #     st.download_button(
+            #         label = 'Download Timesheet(s)',
+            #         data = file,
+            #         file_name = file_name,
+            #         mime = 'application/pdf'
+            #     )
 			
