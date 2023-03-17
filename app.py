@@ -238,7 +238,7 @@ if len(quick_multiselect) > 0:
 		# delete worksheets used as template for date-specific cells         
         del wb[ws1.title]
 		if double_sheets:
-        	del wb[ws2.title]
+        		del wb[ws2.title]
 		
 		# set filename 
         file_name = 'TS'
