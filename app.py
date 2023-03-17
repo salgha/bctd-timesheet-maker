@@ -83,13 +83,10 @@ if len(quick_multiselect) > 0:
     double_sheets = True if date_end.month == get_next_month(date_start).month else False
 	
 	# create and display rig options
-    rig_options = ['', 'BCTD-4', 'BCTD-5']
-    rig_default = rig_options.index(rigs[0]) if len(rigs) > 0 else 0
-    rig = st.selectbox('Rig Name', ['', 'BCTD-4', 'BCTD-5'], index=rig_default)
+    rig = rigs[0]
 	
 	# create rig:wstl dict for cascading options
     wstl_dict = {
-        '': [''],
         'BCTD-4': ['Ken Lynn', 'Pete Riley'],
         'BCTD-5': ['Steve Baranyi', 'Ahmed Mansour']
 		}
