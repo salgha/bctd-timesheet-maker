@@ -251,20 +251,20 @@ if len(quick_multiselect) > 0:
 
             # upload modified workbook and convert to pdf
             convertapi.api_secret = os.environ.get('api_secret')
-            upload_io = convertapi.UploadIO(output.getvalue(), file_name)
+            upload_io = convertapi.UploadIO(output.getvalue(), '{}.xlsx'.format(file_name))
             result = convertapi.convert('pdf', {'File': upload_io})
             saved_file = result.file.save(tempfile.gettempdir())
 
             # display success message and download button(s)
             st.success('Timesheet(s) has been successfully generated.')
         
-            # download excel file
-            st.download_button(
-                label = 'Download EXCEL File',
-                data = output.getvalue(),
-                file_name = file_name,
-                mime = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-            )
+            # # download excel file
+            # st.download_button(
+            #     label = 'Download EXCEL File',
+            #     data = output.getvalue(),
+            #     file_name = file_name,
+            #     mime = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+            # )
 
             # download pdf file
             with open(saved_file, 'rb') as file:
