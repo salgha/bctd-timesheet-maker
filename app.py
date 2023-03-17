@@ -249,7 +249,7 @@ if len(quick_multiselect) > 0:
                 wb.save(tmp.name)
                 output = BytesIO(tmp.read())
 
-            upload modified workbook and convert to pdf
+            # upload modified workbook and convert to pdf
             convertapi.api_secret = os.environ.get('api_secret')
             upload_io = convertapi.UploadIO(output.getvalue(), file_name)
             result = convertapi.convert('pdf', {'File': upload_io})
