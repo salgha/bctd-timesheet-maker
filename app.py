@@ -117,16 +117,14 @@ if len(quick_multiselect) > 0:
     if submitted:
         with st.spinner('Working on your timesheet...'):
 			
-			'''
-			Flow:
-			1	load workbook and template worksheet
-			2	fill-in common cells between all worksheets regardless
-				of date-specific or employee-specific info
-			3	if double sheets; dublicte worksheet
-			4	continue filling-in date-specific cells for each worksheet
-			5	if mutliselects; copy as many related worksheets
-			6	continue filling-in employee-specific cells for each worksheet
-			'''
+			# Flow:
+			# 1	load workbook and template worksheet
+			# 2	fill-in common cells between all worksheets regardless
+			# 	of date-specific or employee-specific info
+			# 3	if double sheets; dublicte worksheet
+			# 4	continue filling-in date-specific cells for each worksheet
+			# 5	if mutliselects; copy as many related worksheets
+			# 6	continue filling-in employee-specific cells for each worksheet
 			
 			# load workbook
             wb = load_workbook(filename=r'template.xlsx', read_only=False)
