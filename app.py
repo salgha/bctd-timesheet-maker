@@ -266,7 +266,7 @@ if len(quick_multiselect) > 0:
                 mime = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
             )
 
-            download pdf file
+            # download pdf file
             with open(saved_file, 'rb') as file:
                 st.download_button(
                     label = 'Download Timesheet(s)',
